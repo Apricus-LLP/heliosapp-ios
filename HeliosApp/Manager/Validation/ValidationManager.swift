@@ -18,7 +18,7 @@ final class ValidationManager {
     func name(_ value:String?) -> ValidationResult {
         let name = (value ?? "").trimmingCharacters(in: .whitespaces)
          if name.isEmpty{
-             return .init(success: false, error: "Name cannot be empty")
+             return .init(success: false, error: "Name can not be empty")
          }
         let set = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ")
         if(name.rangeOfCharacter(from: set.inverted) != nil ) {
@@ -31,7 +31,7 @@ final class ValidationManager {
      func phoneNumber(_ value : String?) -> ValidationResult {
         let mobile = (value ?? "").trimmingCharacters(in: .whitespaces)
         if mobile.isEmpty {
-            return .init(success: false, error: "Phone number cannot be empty")
+            return .init(success: false, error: "Phone number can not be empty")
         }
         else if mobile.count != 10{
             return .init(success: false, error: "Phone number should be of 10 digit")
@@ -51,7 +51,7 @@ final class ValidationManager {
      func email(_ value:String?) -> ValidationResult {
         let email = (value ?? "").trimmingCharacters(in: .whitespaces)
         if email.isEmpty {
-            return .init(success: false, error: "Email cannot be empty")
+            return .init(success: false, error: "Email can not be empty")
         } else {
             // let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
             let reqularExpression = "[A-Z0-9a-z._]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
