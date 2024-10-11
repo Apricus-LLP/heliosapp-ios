@@ -12,10 +12,10 @@ import OTPTextField
 class OtpVerificationVс: UIViewController {
   
   @IBOutlet weak var callBtn: UIButton!
-  @IBOutlet weak var resendsmsBtn: UIButton!
+  @IBOutlet weak var resendSmsBtn: UIButton!
   @IBOutlet weak var timerLabel: UILabel!
   @IBOutlet weak var resendSmsLabel: UILabel!
-  @IBOutlet weak var resendSMSview: UIView!
+  @IBOutlet weak var resendSmsView: UIView!
   @IBOutlet weak var otpTextField: OTPTextField!
   @IBOutlet weak var wrongNoLabel: UITextView!
   
@@ -32,8 +32,8 @@ class OtpVerificationVс: UIViewController {
       setupWrongNoLabel()
       setupOtpTF()
       setupTimer()
-      resendSMSview.addBottomBorderView(color: UIColor.LIGHTGRAY)
-      resendsmsBtn.setTitle("", for: .normal)
+      resendSmsView.addBottomBorderView(color: UIColor.lightGray)
+      resendSmsBtn.setTitle("", for: .normal)
       callBtn.setTitle("", for: .normal)
   }
   
@@ -52,22 +52,22 @@ class OtpVerificationVс: UIViewController {
       var phone = phoneNumber.replacingOccurrences(of: " ", with: "")
       let url = URL(string: "tel://\(phone)")
       if UIApplication.shared.canOpenURL(url!) {
-        UIApplication.shared.open(url!, options: [:]) { success in
-          if success {
-            print("HeiosApp Calling successfully")
-          } else {
-            print("HeiosApp unable to make call")
-          }
-        }
+          UIApplication.shared.open(url!, options: [:]) { success in
+              if success {
+                print("HeliosApp Calling successfully")
+              } else {
+                print("HeliosApp unable to make call")
+              }
+            }
       } else {
-        alertMessage(message: "Invalid phone number")
+          alertMessage(message: "Invalid phone number")
       }
   }
   
   func setupNavTitle() {
       self.title = "Verify \(phoneNo)"
       let appearence = UINavigationBarAppearance()
-      appearence.titleTextAttributes = [.foregroundColor: UIColor.GREEN]
+      appearence.titleTextAttributes = [.foregroundColor: UIColor.orange]
       navigationItem.standardAppearance = appearence
   }
   
@@ -83,7 +83,7 @@ class OtpVerificationVс: UIViewController {
       attributedString.addAttribute(.link, value: "wrongNumberAction", range: wrongNoRange)
       
       wrongNoLabel.attributedText = attributedString
-      wrongNoLabel.textColor = UIColor.LIGHTGRAY
+      wrongNoLabel.textColor = UIColor.lightGray
       wrongNoLabel.textAlignment = .center
       wrongNoLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
       wrongNoLabel.isEditable = false
@@ -94,38 +94,37 @@ class OtpVerificationVс: UIViewController {
   }
   
   func setupOtpTF() {
-    otpTF.addBottomBorderTF()
-    otpTF.delegate = self
-    otpTF.otpDelegate = self
-    otpTF.becomeFirstResponder()
+      otpTextField.addBottomBorderTF()
+      otpTextField.delegate = self
+      otpTextField.otpDelegate = self
+      otpTextField.becomeFirstResponder()
   }
   
-  func setupTimer() {
-    var remainingSeconds = 10
-    timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
-      if remainingSeconds > 1 {
-        remainingSeconds -= 1
-        print(remainingSeconds)
-        let minutes = remainingSeconds / 60
-        let seconds = remainingSeconds % 60
-        let timeString = String(format: "%02d:%02d", minutes, seconds)
-        print(timeString)
-        self.timerLabel.text = timeString
-        self.resendSmsLabel.layer.opacity = 0.5
-        self.resendsmsBtn.isEnabled = false
-      } else {
-        self.timerLabel.text = ""
-        self.resendSmsLabel.layer.opacity = 1
-        self.resendsmsBtn.isEnabled = true
-        timer.invalidate()
-        //print("timer ends")
-      }
-    })
-  }
+    func setupTimer() {
+        var remainingSeconds = 10
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { timer in
+            if remainingSeconds > 1 {
+                remainingSeconds -= 1
+                print(remainingSeconds)
+                let minutes = remainingSeconds / 60
+                let seconds = remainingSeconds % 60
+                let timeString = String(format: "%02d:%02d", minutes, seconds)
+                print(timeString)
+                self.timerLabel.text = timeString
+                self.resendSmsLabel.layer.opacity = 0.5
+                self.resendSmsBtn.isEnabled = false
+            } else {
+                self.timerLabel.text = ""
+                self.resendSmsLabel.layer.opacity = 1
+                self.resendSmsBtn.isEnabled = true
+                timer.invalidate()
+            }
+        })
+    }
 }
 
 
-extension OtpVerificationVc: UITextViewDelegate {
+extension OtpVerificationVс: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.absoluteString == "wrongNumberAction" {
             let alert = UIAlertController(title: "Wrong Number?", message: "Are you sure you want to change the number ?", preferredStyle: .alert)
@@ -133,7 +132,7 @@ extension OtpVerificationVc: UITextViewDelegate {
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
               DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: .main)
-                if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumberVc") as? VerifyPhoneNumberVC {
+                if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumberVc") as? VerifyPhoneNumberVс {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
               }
@@ -146,7 +145,7 @@ extension OtpVerificationVc: UITextViewDelegate {
 }
 
 
-extension OtpVerificationVC: OTPTextFieldDelegate, UITextFieldDelegate {
+extension OtpVerificationVс: OTPTextFieldDelegate, UITextFieldDelegate {
     func otpTextField(_ textField: OTPTextField, didChange otpCode: String) {
         if otpCode.count == 6 {
             if otpCode == "000000" {
@@ -154,16 +153,16 @@ extension OtpVerificationVC: OTPTextFieldDelegate, UITextFieldDelegate {
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
                   self.timer?.invalidate()
                   DispatchQueue.main.async {
-                      let storyboard = UIStoryboard(name: "Main", bundle: .main)
-                      if let vc = storyboard.instantiateViewController(withIdentifier: "ProfileInfoVc") as? ProfileInfoVC {
-                        self.navigationController?.pushViewController(vc, animated: true)
-                      }
+                      //let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                      //if let vc = storyboard.instantiateViewController(withIdentifier: "ProfileInfoVc") as? ProfileInfoVc {
+                      //self.navigationController?.pushViewController(vc, animated: true)
+                      //}
                   }
                 }))
                 present(alert, animated: true)
             } else {
-              alertMessage(message: "Wrong sms code entered. Try again")
-              textField.text = ""
+                alertMessage(message: "Wrong sms code entered. Try again")
+                textField.text = ""
             }
         }
     }

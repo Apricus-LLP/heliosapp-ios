@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//import CountryPickerView
-//import FlagPhoneNumber
+import CountryPickerView
+import FlagPhoneNumber
 
 protocol getPhoneNumberDelegate: AnyObject {
     func getPhoneNumber(phoneNumber: String)
@@ -32,7 +32,7 @@ class VerifyPhoneNumberVс: UIViewController {
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.BLACKWHITE
+            appearance.backgroundColor = UIColor.black
             appearance.titleTextAttributes = [.foregroundColor: UIColor.label]
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -50,9 +50,9 @@ class VerifyPhoneNumberVс: UIViewController {
         UserDefaults.standard.setValue(fullPhoneNumber, forKey: "phoneNo")
         
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "OtpVerificationVc") as? OtpVerificationVC {
-          vc.phoneNo = fullPhoneNumber
-          self.navigationController?.pushViewController(vc, animated: true)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "OtpVerificationVc") as? OtpVerificationVс {
+            vc.phoneNo = fullPhoneNumber
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -76,7 +76,7 @@ class VerifyPhoneNumberVс: UIViewController {
 }
 
 
-extension VerifyPhoneNumberVc: CountryPickerViewDelegate {
+extension VerifyPhoneNumberVс: CountryPickerViewDelegate {
     func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
         if let countryCode = FPNCountryCode(rawValue: country.code) {
             phoneNumberView.setFlag(countryCode: countryCode)

@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = AppStoryboard.main.getRootViewController(TabBarController.self)
         let loginVc = AppStoryboard.login.getRootViewController(LoginNav.self)
         
-        window.rootViewController = tabBarController
+        window.rootViewController = loginVc
         
         self.window = window
         window.makeKeyAndVisible()

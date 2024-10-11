@@ -12,7 +12,7 @@ import SafariServices
 
 class TermsAndServicesVс: UIViewController {
   
-  @IBOutlet weak var animationView: LottieAnimationView!
+  //@IBOutlet weak var animationView: LottieAnimationView!
   @IBOutlet weak var policyServicesLabel: UITextView!
   
   override func viewDidLoad() {
@@ -26,7 +26,7 @@ class TermsAndServicesVс: UIViewController {
   
   @IBAction func agreeBtn(_ sender: Any) {
       let storyboard = UIStoryboard(name: "Main", bundle: .main)
-      if let verifyVc = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumberVc") as? VerifyPhoneNumberVc {
+      if let verifyVc = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumberVc") as? VerifyPhoneNumberVс {
           self.navigationController?.pushViewController(verifyVc, animated: true)
       }
   }
@@ -52,19 +52,19 @@ class TermsAndServicesVс: UIViewController {
   }
   
     func setupAgreeContinueAnimationView() {
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        animationView.animationSpeed = 0.4
-        animationView.play()
+//        animationView.contentMode = .scaleAspectFit
+//        animationView.loopMode = .loop
+//        animationView.animationSpeed = 0.4
+//        animationView.play()
     }
 }
 
 
-extension TermsAndServicesVC: UITextViewDelegate {
+extension TermsAndServicesVс: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        let safariVC = SFSafariViewController(url: URL)
-        safariVC.modalPresentationStyle = .overFullScreen
-        present(safariVC, animated: true, completion: nil)
+        let safariVc = SFSafariViewController(url: URL)
+        safariVc.modalPresentationStyle = .overFullScreen
+        present(safariVc, animated: true, completion: nil)
         return false
     }
 }

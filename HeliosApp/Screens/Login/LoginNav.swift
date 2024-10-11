@@ -9,10 +9,7 @@
 import UIKit
 
 class LoginNav: UINavigationController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-
 }
