@@ -25,7 +25,7 @@ class TermsAndServicesVс: UIViewController {
   }
   
   @IBAction func agreeBtn(_ sender: Any) {
-      let storyboard = UIStoryboard(name: "Main", bundle: .main)
+      let storyboard = UIStoryboard(name: "Login", bundle: .main)
       if let verifyVc = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumberVc") as? VerifyPhoneNumberVс {
           self.navigationController?.pushViewController(verifyVc, animated: true)
       }
@@ -38,8 +38,8 @@ class TermsAndServicesVс: UIViewController {
       let privacyPolicyRange = (labelText as NSString).range(of: "Privacy Policy")
       let termsOfServicesRange = (labelText as NSString).range(of: "Terms of Services")
       
-      attributedString.addAttribute(.link, value: "https://apricus.kz/privacy-policy", range: privacyPolicyRange)
-      attributedString.addAttribute(.link, value: "https://apricus.kz/terms-of-service", range: termsOfServicesRange)
+      attributedString.addAttribute(.link, value: "https://apricus.kz/", range: privacyPolicyRange)
+      attributedString.addAttribute(.link, value: "https://apricus.kz/", range: termsOfServicesRange)
       
       policyServicesLabel.attributedText = attributedString
       policyServicesLabel.isEditable = false

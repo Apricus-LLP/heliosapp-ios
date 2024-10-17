@@ -38,11 +38,11 @@ class OtpVerificationVс: UIViewController {
   }
   
   @IBAction func resendSmsBtn(_ sender: Any) {
-      let alert = UIAlertController(title: "HeliosApp", message: "New sms with code sent", preferredStyle: .alert)
+      let alert = UIAlertController(title: "Helios", message: "New sms with code sent", preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-        DispatchQueue.main.async {
-          self.setupTimer()
-        }
+          DispatchQueue.main.async {
+              self.setupTimer()
+          }
       }))
       present(alert, animated: true)
   }
@@ -54,9 +54,9 @@ class OtpVerificationVс: UIViewController {
       if UIApplication.shared.canOpenURL(url!) {
           UIApplication.shared.open(url!, options: [:]) { success in
               if success {
-                print("HeliosApp Calling successfully")
+                  print("Helios app debug Calling successfully")
               } else {
-                print("HeliosApp unable to make call")
+                  print("Helios app debug Unable to make call")
               }
             }
       } else {
@@ -130,14 +130,15 @@ extension OtpVerificationVс: UITextViewDelegate {
             let alert = UIAlertController(title: "Wrong Number?", message: "Are you sure you want to change the number ?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-              DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "Main", bundle: .main)
-                if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumberVc") as? VerifyPhoneNumberVс {
-                    self.navigationController?.pushViewController(vc, animated: true)
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: "Login", bundle: .main)
+                    if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyPhoneNumberVc") as? VerifyPhoneNumberVс {
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
-              }
             }))
             present(alert, animated: true)
+            
             return false
         }
         return true
@@ -149,7 +150,7 @@ extension OtpVerificationVс: OTPTextFieldDelegate, UITextFieldDelegate {
     func otpTextField(_ textField: OTPTextField, didChange otpCode: String) {
         if otpCode.count == 6 {
             if otpCode == "000000" {
-                let alert = UIAlertController(title: "HeliosApp", message: "Sms code verified successfully", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Helios", message: "Sms code verified successfully", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
                   self.timer?.invalidate()
                   DispatchQueue.main.async {

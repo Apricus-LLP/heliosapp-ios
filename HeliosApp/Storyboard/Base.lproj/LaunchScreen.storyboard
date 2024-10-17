@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heliosImg" translatesAutoresizingMaskIntoConstraints="NO" id="YtH-Fp-rlO">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSquare" translatesAutoresizingMaskIntoConstraints="NO" id="YtH-Fp-rlO">
                                 <rect key="frame" x="146.66666666666666" y="376" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="byD-nW-udH"/>
@@ -25,16 +25,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="s0t-TQ-BVE">
-                                <rect key="frame" x="142" y="770.66666666666663" width="109" height="47.333333333333371"/>
+                                <rect key="frame" x="142" y="794" width="109" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilV-dn-GpF">
-                                        <rect key="frame" x="0.0" y="0.0" width="109" height="19.333333333333332"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilV-dn-GpF">
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="S8T-OV-zop">
-                                        <rect key="frame" x="0.0" y="23.333333333333371" width="109" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="24"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promoImg" translatesAutoresizingMaskIntoConstraints="NO" id="cXe-NQ-dZb">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -71,16 +71,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heliosImg" width="475" height="477"/>
-        <image name="promoImg" width="41" height="47"/>
+        <image name="logoSquare" width="1024" height="1024"/>
+        <image name="promoImg" width="29" height="29"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

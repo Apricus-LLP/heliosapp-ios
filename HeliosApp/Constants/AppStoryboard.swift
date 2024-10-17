@@ -20,7 +20,7 @@ enum AppStoryboard: String {
     func getRootViewController<T: UIViewController>(_ viewController: T.Type) -> T {
         let storyboard = UIStoryboard(name: self.rawValue, bundle: nil)
         guard let rootVc = storyboard.instantiateViewController(withIdentifier: String(describing: viewController)) as? T else {
-            fatalError(String(describing: viewController) + "Not Found")
+            fatalError(String(describing: viewController) + " Not Found")
         }
         return rootVc
     }

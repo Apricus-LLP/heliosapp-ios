@@ -17,7 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         let tabBarController = AppStoryboard.main.getRootViewController(TabBarController.self)
-        let loginVc = AppStoryboard.login.getRootViewController(LoginNav.self)
+        
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        let loginVc = storyboard.instantiateViewController(withIdentifier: "TermsAndServicesVc")
+        //let loginVc = AppStoryboard.login.getRootViewController(TermsAndServicesVс.self)
         
         window.rootViewController = loginVc
         

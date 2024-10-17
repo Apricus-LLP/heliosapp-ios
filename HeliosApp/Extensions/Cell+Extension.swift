@@ -32,5 +32,3 @@ extension UIViewController: IdNibLoadable {
 extension UIView: IdNibLoadable {
     //
 }
-
-

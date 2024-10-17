@@ -21,16 +21,16 @@ class LoginVc: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneBtn.isEnabled = false
+        ///doneBtn.isEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        txtPhoneNumber.becomeFirstResponder()
+        //txtPhoneNumber.becomeFirstResponder()
     }
     
     @IBAction func didPhoneNumberCharChange(_ sender: UITextField) {
-        doneBtn.isEnabled = (sender.text?.count == 10)
+        //doneBtn.isEnabled = (sender.text?.count == 10)
     }
     
     @IBAction func didCountryChangeBtnClick(_ sender: Any) {
@@ -44,7 +44,6 @@ class LoginVc: UIViewController {
         self.view.addSubview(picker)
         
         toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 250, width: UIScreen.main.bounds.size.width, height: 44))
-        
         
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(onCancelButtonTapped))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -93,6 +92,7 @@ extension LoginVc: UIPickerViewDelegate, UIPickerViewDataSource {
         return "\(code.code) \(code.country)"
     }
 }
+
 
 extension LoginVc: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
